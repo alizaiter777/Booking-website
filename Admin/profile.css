@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.profile-info p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+    margin-left: 200px;
+}
+
+.profile-info img {
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.upload-form {
+    margin-top: 20px;
+}
+
+.upload-form h2 {
+    margin-bottom: 10px;
+}
+
+.upload-form input[type="file"] {
+    margin: 10px 0;
+}
+
+.upload-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.upload-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.message {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.message.error {
+    color: red;
+}
+
+.message.success {
+    color: green;
+}

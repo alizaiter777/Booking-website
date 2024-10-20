@@ -1,0 +1,236 @@
+:root,
+::before,
+::after {
+  --text: #333;
+  --text-inverted: #fff;
+  --text-disabled: #B3B3B3;
+  --bg-white: #fff;
+  --bg-grey: #f3f3f3;
+  --bg-inverted: #333;
+  --bg-disabled: #f3f3f3;
+  --step-duration: 250ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 60em;
+  margin-inline: auto;
+  padding-block: 3em;
+}
+
+.stepper {
+  display: flex;
+  overflow-x: auto;
+  margin-left: -5%;
+  margin-right: -5%;
+  margin-top: -40px;
+}
+
+.stepper__content {
+  background-color: var(--bg-grey);
+  margin-top: 1rem;
+  padding: 1em;
+  border-radius: 1rem;
+  min-height: 5rem;
+}
+
+.stepper__controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 2em;
+}
+
+.step__content {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transition-duration: calc(var(--step-duration) * 0.5);
+}
+
+.step__content.is-hidden {
+  display: none;
+}
+
+.step__content.active {
+  visibility: visible;
+  opacity: 1;
+  z-index: 10;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex: 1 0 5rem;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  color: var(--text);
+  transition-duration: var(--step-duration);
+  transition-delay: 0ms;
+}
+
+.step button,
+.step a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.step button:disabled,
+.step a:disabled {
+  cursor: not-allowed;
+}
+
+.step__label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: inherit;
+  padding: 0.25em;
+  text-align: center;
+}
+
+.step__label:disabled {
+  color: var(--text-disabled);
+}
+
+.step__label:disabled .step__circle {
+  background-color: var(--text-disabled);
+}
+
+.step__label:disabled + .step__connector .step__connector__line {
+  transform: scaleX(0);
+}
+
+.step__label > * {
+  margin: 0;
+}
+
+.step__circle {
+  position: relative;
+  padding: 0.125em;
+  background-color: var(--text-disabled);
+  display: flex;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  margin-bottom: 0.5em;
+  overflow: hidden;
+  z-index: 0;
+  box-shadow: 0 0 0 0 var(--bg-white), 0 0 0 0 var(--text);
+  transition-duration: var(--step-duration);
+}
+
+.step__circle:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--text);
+  transform: translateX(-100%);
+  transition-duration: var(--step-duration);
+}
+
+.step__circle__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  z-index: 10;
+  background-color: var(--bg-white);
+  transition-duration: calc(var(--step-duration) * 0.5);
+}
+
+.step__connector {
+  position: absolute;
+  flex: 1 1 auto;
+  top: 1.25em;
+  left: calc(-50% + 2em);
+  right: calc(50% + 2em);
+  background: var(--text-disabled);
+  height: 0.125em;
+  border-radius: 999rem;
+  overflow: hidden;
+}
+
+.step__connector__line {
+  border-color: rgb(117, 117, 117);
+  border-top-style: solid;
+  border-top-width: 0.125em;
+  transform-origin: left;
+  transition-delay: var(--step-duration);
+  transition-duration: var(--step-duration);
+  transform: scaleX(0);
+}
+
+.step.done .step__circle:before {
+  transform: translateX(0%);
+  transition-delay: var(--step-duration);
+}
+
+.step.done .step__connector__line {
+  transition-delay: 0ms;
+  transform: none;
+}
+
+.step.active {
+  color: var(--text);
+}
+
+.step.active .step__circle {
+  background-color: var(--text);
+  transition-delay: calc(var(--step-duration) * 2);
+  box-shadow: 0 0 0 0.125em var(--bg-white), 0 0 0 0.25em var(--text);
+}
+
+.step.active .step__circle__inner {
+  background-color: var(--bg-inverted);
+  color: var(--text-inverted);
+  transition-delay: calc(var(--step-duration) * 1.5);
+}
+
+.step.active .step__circle:before {
+  transition-delay: var(--step-duration);
+  transform: translateX(0%);
+}
+
+.step.active .step__connector__line {
+  transition-delay: 0ms;
+  transform: none;
+}
+
+.btn {
+  background-color: var(--bg-inverted);
+  color: var(--text-inverted);
+  border-radius: 0.5em;
+  border: 0.25rem solid var(--text-inverted);
+  padding: 0.5em 0.75em;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  color: var(--text-disabled);
+  background-color: var(--bg-disabled);
+}
+
+
