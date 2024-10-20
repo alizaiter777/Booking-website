@@ -1,0 +1,375 @@
+
+
+/* Typography =======================*/
+
+/* Headings */
+
+/* Main heading for card's front cover */
+.card-front__heading1 {
+  font-size: 1.5rem;
+  margin-top: .1rem;
+}
+
+/* Main heading for inside page */
+.inside-page__heading1 { 
+  padding-bottom: 0rem; 
+  width: 100%;
+}
+
+/* Mixed */
+
+/* For both inside page's main heading and 'view me' text on card front cover */
+.inside-page__heading1,
+.card-front__text-view1 {
+  font-size: 1.0rem;
+  font-weight: 800;
+  margin-top: .3rem;
+}
+
+.inside-page__heading--city1,
+.card-front__text-view--city1 { color: #ff62b2; }
+
+.inside-page__heading--ski1,
+.card-front__text-view--ski1 { color: #2aaac1; }
+
+.inside-page__heading--beach1,
+.card-front__text-view--beach1 { color: #fa7f67; }
+
+.inside-page__heading--camping1,
+.card-front__text-view--camping1 { color: #00b97c; }
+
+/* Front cover */
+
+.card-front__tp1 { color: #fafbfa; }
+
+/* For pricing text on card front cover */
+
+
+/* Back cover */
+
+/* For inside page's body text */
+.inside-page__text1 {
+  color: #333;
+  margin-top:-10px;
+  padding: .5cm .2cm;
+}
+
+/* Icons ===========================================*/
+
+.card-front__icon1 {
+  fill: #fafbfa;
+  font-size: 3vw;
+  height: 3.25rem;
+  margin-top: -.5rem;
+  width: 3.25rem;
+}
+
+/* Buttons =================================================*/
+
+.inside-page__btn1 {
+  background-color: transparent;
+  border: 3px solid;
+  border-radius: .5rem;
+  font-size: 1rem;
+  font-weight: 500;
+ 
+  overflow: hidden;
+  padding: 0rem .4cm;
+  position: relative;
+  text-decoration: none;
+  transition: all .3s ease;
+  width: 70%;
+  z-index: 10;
+  margin-bottom: 100px;
+  margin-top: -40px;
+  
+}
+
+
+.inside-page__btn1::before { 
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: scaleY(0);
+  transition: all .3s ease;
+  width: 100%;
+  z-index: -1;
+  
+ 
+}
+
+.inside-page__btn--city1 { 
+  border-color: #ff40a1;
+  color: #ff40a1;
+  margin-bottom: -2px;
+ 
+}
+
+.inside-page__btn--city1::before { 
+  background-color: #ff40a1;
+ 
+}
+
+.inside-page__btn--ski1 { 
+  border-color: #279eb2;
+  color: #279eb2;
+  margin-bottom: -2px;
+}
+
+.inside-page__btn--ski1::before { 
+  background-color: #279eb2;
+}
+
+.inside-page__btn--beach1 { 
+  border-color: #fa7f67;
+  color: #fa7f67;
+  margin-bottom: -2px;
+}
+
+.inside-page__btn--beach1::before { 
+  background-color: #fa7f67;
+}
+
+.inside-page__btn--camping1 { 
+  border-color: #00b97d;
+  color: #00b97d;
+  margin-bottom: -2px;
+  
+}
+
+.inside-page__btn--camping1::before { 
+  background-color: #00b97d;
+}
+
+.inside-page__btn1:hover { 
+  color: #fafbfa;
+}
+
+.inside-page__btn1:hover::before { 
+  transform: scaleY(1);
+}
+
+/* Layout Structure=========================================*/
+
+.main1 {
+  background-image:url(https://wellsgray.ca/wp-content/uploads/2020/12/TWG_Moul_Falls-web-edited.jpg);
+  display: flex;
+  
+  flex-direction: column;
+  justify-content: center;
+  height: 50vh;
+  width: 100%;
+}
+
+/* Container to hold all cards in one place */
+.card-area1 {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+  justify-content: space-evenly;
+  padding: 1rem;
+  margin-bottom:80px;
+}
+
+/* Card ============================================*/
+
+/* Area to hold an individual card */
+.card-section1 {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+/* A container to hold the flip card and the inside page */
+.card1{
+  background-color: rgba(0,0,0, .05);
+  box-shadow: -.1rem 1.7rem 6.6rem -3.2rem rgba(0,0,0,0.5);
+  height: 15rem;
+  position: relative;
+  transition: all 1s ease;
+  width: 15rem;
+}
+
+/* Flip card - covering both the front and inside front page */
+
+/* An outer container to hold the flip card. This excludes the inside page */
+.flip-card1 {
+  height: 10rem;
+  perspective: 100rem;
+  position: absolute;
+  right: 0;
+  transition: all 1s ease;
+  visibility: hidden;
+  width: 15rem;
+  z-index: 100;
+}
+
+/* The outer container's visibility is set to hidden. This is to make everything within the container NOT set to hidden  */
+/* This is done so content in the inside page can be selected */
+.flip-card1 > * {
+  visibility: visible;
+}
+
+/* An inner container to hold the flip card. This excludes the inside page */
+.flip-card__container1 {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: all 1s ease;
+  width: 100%;
+}
+
+.card-front1,
+.card-back1 {
+  backface-visibility: hidden;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* Styling for the front side of the flip card */
+
+/* container for the front side */
+.card-front1 {
+  background-color: #fafbfa;
+  height: 15rem;
+  width: 15rem;
+}
+
+/* Front side's top section */
+.card-front__tp1 {
+  align-items: center;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 100%, 43% 90%, 0 90%);
+  display: flex;
+  flex-direction: column;
+  height: 8rem;
+  justify-content: center;
+  padding: .75rem;
+}
+
+.card-front__tp--city1 {
+  background: linear-gradient(
+    to bottom,
+    #ff73b9,
+    #ff40a1
+  );
+  
+}
+
+.card-front__tp--ski1 {
+  background: linear-gradient(
+    to bottom,
+    #47c2d7,
+    #279eb2
+  );
+}
+
+.card-front__tp--beach1 {
+  background: linear-gradient(
+    to bottom,
+    #fb9b88,
+    #f86647
+  );
+}
+
+.card-front__tp--camping1 {
+  background: linear-gradient(
+    to bottom,
+    #00db93,
+    #00b97d
+  );
+  
+}
+
+/* Front card's bottom section */
+.card-front__bt1 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* Styling for the back side of the flip card */
+
+.card-back1 {
+  background-color: #fafbfa;
+  transform: rotateY(180deg);
+}
+
+/* Specifically targeting the <video> element */
+.video__container {
+  clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%);
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Inside page */
+
+.inside-page1 {
+  background-color: #fafbfa;
+  box-shadow: inset 20rem 0px 5rem -2.5rem rgba(0,0,0,0.25);
+  height: 100%;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  transition: all 1s ease;
+  width: 13rem;
+  z-index: 1;
+}
+
+.inside-page__container1 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center; 
+  width: 100%;
+}
+
+/* Functionality ====================================*/
+
+/* This is to keep the card centered (within its container) when opened */
+.card1:hover {
+  box-shadow:
+  -.1rem 1.7rem 6.6rem -3.2rem rgba(0,0,0,0.75);
+  width: 30rem;
+}
+
+/* When the card is hovered, the flip card container will rotate */
+.card1:hover .flip-card__container1 {
+  transform: rotateY(-180deg);
+}
+
+/* When the card is hovered, the shadow on the inside page will shrink to the left */
+.card1:hover .inside-page1 {
+  box-shadow: inset 1rem 0px 5rem -2.5rem rgba(0,0,0,0.1);
+}
+
+/* Footer ====================================*/
+
+.footer {
+  background-color: #333;
+   margin-top: 3rem;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.footer-text {
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+
+
+
